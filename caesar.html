@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caesar Cipher Analyzer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+    }
+    
+    .tool-container {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      width: 95%;
+      max-width: 900px;
+    }
+    
+    .btn {
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn:active {
+      transform: translateY(1px);
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+    }
+    
+    textarea, input {
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    textarea:focus, input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Mobile specific adjustments */
+    @media (max-width: 640px) {
+      .tool-container {
+        padding: 1.5rem;
+        border-radius: 1rem;
+      }
+      
+      h1 {
+        font-size: 1.75rem;
+      }
+      
+      .action-buttons {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .shift-controls {
+        flex-direction: column;
+      }
+      
+      .shift-controls input[type="range"] {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center p-4 text-white">
+  <div class="tool-container p-6 md:p-8 rounded-xl md:rounded-2xl animate__animated animate__fadeIn">
+    <div class="text-center mb-6 md:mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">Caesar Cipher Tool</h1>
+      <p class="text-blue-100 text-sm md:text-base">Encrypt, decrypt, and analyze text with the classic Caesar cipher</p>
+    </div>
+
+    <div class="mb-5 md:mb-6 fade-in">
+      <label class="block mb-2 font-medium text-blue-100">Text:</label>
+      <textarea id="inputText" class="w-full p-3 md:p-4 rounded-lg text-gray-800 bg-white bg-opacity-90 focus:bg-opacity-100" 
+                rows="5" placeholder="Enter text to encrypt or decrypt..."></textarea>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-5 md:mb-6">
+      <div class="fade-in" style="animation-delay: 0.1s">
+        <label class="block mb-2 font-medium text-blue-100">Shift Value:</label>
+        <div class="flex items-center shift-controls">
+          <input type="range" id="shiftSlider" min="0" max="25" value="3" 
+                 class="w-full mr-3 md:mr-4 h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer">
+          <input type="number" id="shift" min="0" max="25" value="3" 
+                 class="w-16 md:w-20 p-2 rounded-lg text-center text-gray-800 bg-white bg-opacity-90">
+        </div>
+      </div>
+      
+      <div class="fade-in" style="animation-delay: 0.2s">
+        <label class="block mb-2 font-medium text-blue-100">Actions:</label>
+        <div class="grid grid-cols-2 gap-2 md:gap-3 action-buttons">
+          <button onclick="encrypt()" class="btn bg-green-500 hover:bg-green-600 px-3 py-2 md:px-4 md:py-3 rounded-lg flex items-center justify-center text-sm md:text-base">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+            Encrypt
+          </button>
+          <button onclick="decrypt()" class="btn bg-blue-500 hover:bg-blue-600 px-3 py-2 md:px-4 md:py-3 rounded-lg flex items-center justify-center text-sm md:text-base">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd" />
+            </svg>
+            Decrypt
+          </button>
+          <button onclick="analyze()" class="btn bg-yellow-500 hover:bg-yellow-600 px-3 py-2 md:px-4 md:py-3 rounded-lg flex items-center justify-center text-sm md:text-base">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" />
+            </svg>
+            Analyze
+          </button>
+          <button onclick="runTests()" class="btn bg-red-500 hover:bg-red-600 px-3 py-2 md:px-4 md:py-3 rounded-lg flex items-center justify-center text-sm md:text-base pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-1 md:mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd" />
+            </svg>
+            Test
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in" style="animation-delay: 0.3s">
+      <div class="flex justify-between items-center mb-2">
+        <h2 class="text-lg md:text-xl font-semibold text-blue-100">Output:</h2>
+        <button onclick="copyOutput()" class="text-xs md:text-sm bg-gray-700 hover:bg-gray-600 px-2 py-1 md:px-3 md:py-1 rounded-lg flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+            <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+          </svg>
+          Copy
+        </button>
+      </div>
+      <div id="output" class="mt-2 bg-white bg-opacity-10 p-3 md:p-4 rounded-lg min-h-32 border border-white border-opacity-20 whitespace-pre-wrap overflow-auto max-h-64 text-sm md:text-base"></div>
+    </div>
+    
+    <div class="mt-4 md:mt-6 text-center text-xs md:text-sm text-blue-100 opacity-70">
+      <p>Shift values range from 0 to 25. Analysis shows all possible decryptions.</p>
+    </div>
+  </div>
+
+  <script>
+    // Sync slider and number input
+    document.getElementById('shiftSlider').addEventListener('input', function() {
+      document.getElementById('shift').value = this.value;
+    });
+    
+    document.getElementById('shift').addEventListener('input', function() {
+      const val = Math.min(25, Math.max(0, parseInt(this.value) || 0));
+      this.value = val;
+      document.getElementById('shiftSlider').value = val;
+    });
+
+    function caesarCipher(text, shift, decrypt = false) {
+      if (decrypt) shift = (26 - shift) % 26;
+      return text.replace(/[a-z]/gi, c => {
+        const base = c.charCodeAt(0) < 97 ? 65 : 97;
+        return String.fromCharCode((c.charCodeAt(0) - base + shift) % 26 + base);
+      });
+    }
+
+    function animateOutput() {
+      const output = document.getElementById('output');
+      output.classList.remove('animate__animated', 'animate__fadeIn');
+      void output.offsetWidth; // Trigger reflow
+      output.classList.add('animate__animated', 'animate__fadeIn');
+    }
+
+    function encrypt() {
+      const text = document.getElementById("inputText").value;
+      const shift = parseInt(document.getElementById("shift").value);
+      const result = caesarCipher(text, shift);
+      document.getElementById("output").innerText = result;
+      animateOutput();
+    }
+
+    function decrypt() {
+      const text = document.getElementById("inputText").value;
+      const shift = parseInt(document.getElementById("shift").value);
+      const result = caesarCipher(text, shift, true);
+      document.getElementById("output").innerText = result;
+      animateOutput();
+    }
+
+    function analyze() {
+      const text = document.getElementById("inputText").value;
+      let results = "🔍 Possible Decryptions:\n\n";
+      for (let i = 1; i < 26; i++) {
+        results += `🔑 Shift ${i.toString().padStart(2, '0')}: ${caesarCipher(text, i, true)}\n\n`;
+      }
+      document.getElementById("output").innerText = results;
+      animateOutput();
+    }
+
+    function runTests() {
+      const output = document.getElementById("output");
+      const sample = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Caesar Cipher Performance Test.";
+      const shift = 5;
+      const iterations = 100000;
+      let encrypted, decrypted;
+
+      const startEnc = performance.now();
+      for (let i = 0; i < iterations; i++) {
+        encrypted = caesarCipher(sample, shift);
+      }
+      const endEnc = performance.now();
+
+      const startDec = performance.now();
+      for (let i = 0; i < iterations; i++) {
+        decrypted = caesarCipher(encrypted, shift, true);
+      }
+      const endDec = performance.now();
+
+      const accuracy = decrypted === sample ? "✅ 100% Accurate" : "❌ Failed";
+
+      output.innerText = `⚡ Performance Test Results:\n\n` +
+        `📝 Sample Text Length: ${sample.length} characters\n` +
+        `🔄 Iterations: ${iterations.toLocaleString()}\n` +
+        `⏱️ Encryption Time: ${(endEnc - startEnc).toFixed(2)} ms\n` +
+        `⏱️ Decryption Time: ${(endDec - startDec).toFixed(2)} ms\n\n` +
+        `🎯 ${accuracy}`;
+      animateOutput();
+    }
+    
+    function copyOutput() {
+      const output = document.getElementById("output");
+      navigator.clipboard.writeText(output.innerText).then(() => {
+        const copyBtn = document.querySelector('[onclick="copyOutput()"]');
+        const originalText = copyBtn.innerHTML;
+        copyBtn.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+          Copied!
+        `;
+        setTimeout(() => {
+          copyBtn.innerHTML = originalText;
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
