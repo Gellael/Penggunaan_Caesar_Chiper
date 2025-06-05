@@ -1,4 +1,3 @@
-Tentu, mari kita buat deskripsi tersebut menjadi lebih menarik dengan menambahkan emoji!
 
 # 🛡️ Penggunaan Caesar Cipher 🛡️
 
