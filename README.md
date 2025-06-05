@@ -1,54 +1,63 @@
+### 🚀 Proyek Kelompok 1 🚀
 
-### 🛡️ Aplikasi Kriptografi Caesar Cipher 🛡️
+| **Nama** | **NPM** | 
+|:-----------------------|:-------------------:|
+| Koreza Almukadima        | G1A023011 |
+| Hana Syarifah    | G1A023017 |
+| Ricardo Gellael        | G1A023061 | 
+| Merischa Theresia Hutauruk       | G1A023071 |
 
-Caesar Cipher merepresentasikan arketipe enkripsi substitusi monoalfabetik dalam disiplin kriptografi klasik. Metodologi ini, yang historisnya diasosiasikan dengan Julius Caesar untuk tujuan kerahasiaan komunikasi militer 📜, beroperasi dengan melakukan substitusi setiap karakter dalam *plaintext* dengan karakter lain yang bergeser sejauh posisi *n* dalam urutan alfabet standar 🔠. Parameter *n* ini, yang merupakan magnitudo pergeseran, secara terminologi dikenal sebagai **kunci (key)** 🔑 atau **nilai pergeseran (shift value)**.
 
----
+# 🛡️ Aplikasi Kriptografi Caesar Cipher 🛡️
 
-### ✨ Arsitektur Fungsionalitas Instrumentasi Kami! ✨
+Caesar Cipher adalah metode enkripsi substitusi monoalfabetik klasik yang identik dengan Julius Caesar untuk menjaga kerahasiaan komunikasi militer. Cara kerjanya adalah dengan mengganti setiap karakter dalam *plaintext* (teks asli) dengan karakter lain yang bergeser sejauh *n* posisi dalam urutan alfabet. Parameter *n* ini dikenal sebagai **kunci (key)** atau **nilai pergeseran (shift value)**.
 
-Kami telah mengkonstruksi instrumentasi Caesar Cipher yang intuitif dan berkinerja tinggi, mengintegrasikan kapabilitas esensial berikut:
+-----
 
-* **✍️ Modul Ingesti Teks (Text Input Module):** Menyediakan antarmuka area teks yang ekstensif, di mana pengguna dapat memasukkan atau menempelkan korpus teks yang ditujukan untuk operasi enkripsi, dekripsi, atau analisis. Ini memfasilitasi interaksi pengguna yang **efisien**! 🚀
-* **🔢 Kontrol Konfigurasi Nilai Pergeseran (Shift Value Configuration):**
-    * Implementasi *slider* interaktif memungkinkan manipulasi dinamis terhadap nilai pergeseran, memberikan **fleksibilitas optimal** dalam pemilihan kunci, misalnya, pergeseran 3 unit atau 10 unit. ↔️
-    * Tampilan numerik *real-time* terintegrasi secara koheren dengan *slider*, merepresentasikan nilai pergeseran yang aktif; ilustrasinya, pada *state* visual saat ini, nilai pergeseran adalah **3**!
-* **⚡ Antarmuka Aksi Fungsional (Functional Action Interface):** Serangkaian empat tombol eksekusi yang memungkinkan inisiasi operasi spesifik dengan interaksi minimal:
-    * 🔐 **Enkripsi (Encrypt):** Transformasi *plaintext* menjadi *ciphertext*, memastikan **kerahasiaan informasi**.
-    * 🔓 **Dekripsi (Decrypt):** Restorasi *ciphertext* kembali ke *plaintext*, memungkinkan **akses informasi asli**.
-    * 🔍 **Analisis (Analyze):** Prosedur kriptanalitik untuk mengidentifikasi pola atau potensi kunci, **memfasilitasi pemecahan kode**.
-    * 🧪 **Pengujian (Test):** Eksekusi *routine* diagnostik untuk verifikasi fungsionalitas dan integritas operasional instrumentasi.
+## ✨ Tampilan Aplikasi Kami ✨
+![image](https://github.com/user-attachments/assets/0615d166-b586-4546-80ba-e130113f92cd)
 
----
+Aplikasi ini dilengkapi dengan **Antarmuka Aksi Fungsional** yang intuitif, terdiri dari empat tombol utama untuk menjalankan operasi spesifik:
 
-### 📈 Kriptanalisis Berbasis Frekuensi untuk Caesar Cipher Analyzer 📊
+  * 🔐 **Enkripsi (Encrypt):** Mengubah *plaintext* menjadi *ciphertext* untuk menjaga **kerahasiaan informasi**.
 
-Untuk mengaugmentasi kapabilitas "Caesar Cipher Analyzer" yang ada, kami telah mengintegrasikan fitur **analisis frekuensi huruf**, sebuah metodologi kriptanalitik yang **fundamental dan efektif**. Metode ini secara strategis mengeksploitasi properti statistik intrinsik bahasa, yaitu distribusi kemunculan huruf yang konsisten, untuk mendekripsi *cipher* substitusi unialfabetik seperti Caesar Cipher.
+  * 🔓 **Dekripsi (Decrypt):** Mengembalikan *ciphertext* ke *plaintext* untuk **mengakses informasi asli**.
 
-#### 🔬 Prinsip Dasar Kriptanalisis Frekuensi
+  * 🔍 **Analisis (Analyze):** Melakukan prosedur kriptanalitik untuk mengidentifikasi pola atau potensi kunci, **memfasilitasi pemecahan kode**.
 
-Setiap bahasa alami memiliki profil distribusi frekuensi karakter yang **distingtif dan dapat diprediksi secara statistik**. Misalnya, dalam Bahasa Inggris, karakter 'E' secara empiris merupakan yang paling dominan, diikuti oleh 'T', 'A', 'O', 'I', 'N', dan seterusnya. Secara analog, dalam konteks Bahasa Indonesia, karakter-karakter seperti 'A', 'I', 'U', 'E', 'O', 'N', dan 'R' secara konsisten menunjukkan frekuensi kemunculan yang lebih tinggi.
+  * 🧪 **Pengujian (Test):** Menjalankan *routine* diagnostik untuk memverifikasi fungsionalitas dan integritas operasional.
 
-Dalam kerangka Caesar Cipher, transformasi enkripsi hanya melibatkan suatu **translasi siklik** posisi karakter dalam alfabet. Konsekuensinya, **struktur frekuensi inheren** dari *plaintext* secara persisten dipertahankan dalam *ciphertext*, hanya saja mengalami pergeseran posisi. Apabila 'E' merupakan karakter dengan frekuensi tertinggi dalam *plaintext*, maka karakter yang terkorespondensi dengan 'E' setelah translasi akan menjadi karakter dengan frekuensi tertinggi dalam *ciphertext*.
+-----
 
-#### 🔍 Metodologi Analisis Frekuensi (untuk Dešifrasi Caesar Cipher)
+## 📈 Kriptanalisis Berbasis Frekuensi untuk Caesar Cipher Analyzer 📊
 
-Prosedur kriptanalitik ini melibatkan tahapan sekuensial berikut:
+Untuk meningkatkan kemampuan "Caesar Cipher Analyzer" yang ada, kami telah mengintegrasikan fitur **analisis frekuensi huruf**. Metode kriptanalitik ini **fundamental dan sangat efektif**, memanfaatkan properti statistik intrinsik bahasa — yaitu distribusi kemunculan huruf yang konsisten — untuk mendekripsi *cipher* substitusi unialfabetik seperti Caesar Cipher.
 
-1.  **Kuantifikasi Insiden Huruf *Ciphertext***: Melakukan agregasi data numerik terkait frekuensi kemunculan setiap karakter alfabet (A-Z) dalam korpus teks terenkripsi. 🔢
-2.  **Determinasi Karakter Mayoritas *Ciphertext***: Mengidentifikasi karakter atau subset karakter yang menunjukkan insiden kemunculan tertinggi dalam *ciphertext*. 🥇
-3.  **Korelasi Statistik dengan Frekuensi Linguistik Referensi**: Mengemukakan hipotesis bahwa karakter paling dominan dalam *ciphertext* (misalnya, 'X') secara statistik berkorelasi dengan karakter yang paling dominan dalam leksikon bahasa *plaintext* (misalnya, 'A' atau 'I' untuk Bahasa Indonesia). 🔄
-4.  **Derivasi Kandidat Kunci Proposisional**: Mengkalkulasi diskrepansi posisi alfabet antara karakter dominan *ciphertext* dan karakter dominan linguistik referensi untuk mengidentifikasi kandidat kunci.
-    * Contoh Ilustratif: Jika 'X' (berada pada indeks 23 dalam alfabet) adalah karakter dengan frekuensi tertinggi dalam *ciphertext* dan dihipotesiskan merepresentasikan 'A' (indeks 0) dari *plaintext*, maka potensi pergeseran (kunci) adalah $(23 - 0) \pmod{26} = 23$. Alternatifnya, jika diasumsikan merepresentasikan 'I' (indeks 8), maka $(23 - 8) \pmod{26} = 15$. 🔑
-5.  **Validasi Dekripsi Empiris**: Mengaplikasikan setiap kandidat kunci yang dihasilkan untuk mendekripsi *ciphertext*. Kunci yang berhasil menghasilkan *plaintext* yang **koheren dan semantis** divalidasi sebagai solusi yang akurat. ✅
+### 🔬 Prinsip Dasar Kriptanalisis Frekuensi
 
----
+Setiap bahasa alami memiliki profil distribusi frekuensi karakter yang **unik dan dapat diprediksi secara statistik**. Contohnya, dalam Bahasa Inggris, huruf 'E' adalah yang paling sering muncul, diikuti oleh 'T', 'A', 'O', 'I', 'N', dan seterusnya. Serupa dengan itu, dalam Bahasa Indonesia, karakter seperti 'A', 'I', 'U', 'E', 'O', 'N', dan 'R' secara konsisten memiliki frekuensi kemunculan yang tinggi.
 
-### ⚙️ Implementasi Fungsionalitas Analisis Frekuensi (Modifikasi Kode JavaScript)
+Pada Caesar Cipher, enkripsi hanya melibatkan **pergeseran siklik** posisi karakter dalam alfabet. Akibatnya, **struktur frekuensi asli** dari *plaintext* tetap dipertahankan dalam *ciphertext*, hanya saja posisinya bergeser. Jika 'E' adalah karakter paling sering di *plaintext*, maka karakter yang bergeser dari 'E' akan menjadi karakter paling sering di *ciphertext*.
 
-Kami akan mengintegrasikan prototipe fungsionalitas baru dan memperbarui fungsi `analyze()` yang telah ada untuk mendukung kapabilitas ini secara holistik.
+### 🔍 Metodologi Analisis Frekuensi (untuk Dekripsi Caesar Cipher)
 
-**1. Basis Data Frekuensi Huruf Referensi (untuk Bahasa Indonesia):** 📚
+Prosedur kriptanalitik ini melibatkan langkah-langkah berurutan berikut:
+
+1.  **Menghitung Frekuensi Huruf *Ciphertext***: Mengumpulkan data numerik mengenai frekuensi kemunculan setiap karakter alfabet (A-Z) dalam teks terenkripsi. 🔢
+2.  **Menentukan Karakter Mayoritas *Ciphertext***: Mengidentifikasi satu atau beberapa karakter yang paling sering muncul dalam *ciphertext*. 🥇
+3.  **Mengorelasikan Statistik dengan Frekuensi Bahasa Referensi**: Mengasumsikan bahwa karakter paling dominan dalam *ciphertext* (misalnya, 'X') secara statistik berkorelasi dengan karakter yang paling dominan dalam bahasa *plaintext* (misalnya, 'A' atau 'I' untuk Bahasa Indonesia). 🔄
+4.  **Mendapatkan Kandidat Kunci**: Menghitung selisih posisi alfabet antara karakter dominan *ciphertext* dan karakter dominan bahasa referensi untuk mengidentifikasi kandidat kunci.
+      * **Contoh:** Jika 'X' (indeks 23) adalah karakter paling sering di *ciphertext* dan diduga mewakili 'A' (indeks 0) dari *plaintext*, maka potensi pergeseran (kunci) adalah $(23 - 0) \\pmod{26} = 23$. Jika diasumsikan mewakili 'I' (indeks 8), maka $(23 - 8) \\pmod{26} = 15$. 🔑
+5.  **Validasi Dekripsi Empiris**: Menerapkan setiap kandidat kunci untuk mendekripsi *ciphertext*. Kunci yang berhasil menghasilkan *plaintext* yang **koheren dan memiliki makna** divalidasi sebagai solusi yang akurat. ✅
+
+-----
+
+## ⚙️ Implementasi Fungsionalitas Analisis Frekuensi (Modifikasi Kode JavaScript)
+
+Kami telah mengintegrasikan fungsionalitas baru ini dan memperbarui fungsi `analyze()` yang ada untuk mendukung kapabilitas ini secara menyeluruh.
+
+### 1\. Basis Data Frekuensi Huruf Referensi (untuk Bahasa Indonesia): 📚
+
 Dataset ini menyediakan profil frekuensi huruf rata-rata Bahasa Indonesia (menggunakan indeks 0-25 untuk A-Z), berfungsi sebagai referensi komparatif:
 
 ```javascript
@@ -60,8 +69,9 @@ const indoFreq = [
 // Karakter dengan frekuensi tertinggi yang umum di Bahasa Indonesia: A (indeks 0), I (indeks 8), N (indeks 13), E (indeks 4)
 ```
 
-**2. Algoritma Penghitungan Frekuensi Karakter *Ciphertext*:** 🔢
-Fungsi ini didesain secara spesifik untuk mengkuantifikasi distribusi frekuensi karakter dalam korpus teks yang disediakan:
+### 2\. Algoritma Penghitungan Frekuensi Karakter *Ciphertext*: 🔢
+
+Fungsi ini dirancang khusus untuk menghitung distribusi frekuensi karakter dalam teks yang diberikan:
 
 ```javascript
 // Fungsi untuk melakukan kalkulasi frekuensi karakter dalam teks input
@@ -90,8 +100,9 @@ function calculateFrequency(text) {
 }
 ```
 
-**3. Pembaruan Fungsi `analyze()`: Integrasi Kriptanalisis Frekuensi Komprehensif:** 🧠
-Fungsi `analyze()` kini diperkaya untuk menyajikan dua pendekatan dekripsi yang komplementer: metode *brute-force* dan pendekatan kriptanalisis berbasis frekuensi.
+### 3\. Pembaruan Fungsi `analyze()`: Integrasi Kriptanalisis Frekuensi Komprehensif: 🧠
+
+Fungsi `analyze()` kini diperkaya untuk menyajikan dua pendekatan dekripsi yang saling melengkapi: metode *brute-force* dan pendekatan kriptanalisis berbasis frekuensi.
 
 ```javascript
 function analyze() {
@@ -149,14 +160,13 @@ function analyze() {
 }
 ```
 
-#### 🚀 Benefis Fungsionalitas Analisis Frekuensi:
+#### 🚀 Manfaat Fungsionalitas Analisis Frekuensi:
 
-Dengan integrasi kapabilitas analisis frekuensi ini, instrumentasi Caesar Cipher bertransformasi melampaui fungsi konverter dasar. Ketika pengguna menginisiasi operasi "Analyze", mereka akan memperoleh:
+Dengan integrasi kapabilitas analisis frekuensi ini, alat Caesar Cipher Anda bertransformasi melampaui fungsi konverter dasar. Ketika pengguna menginisiasi operasi "Analyze", mereka akan memperoleh:
 
 1.  **Dekripsi *Brute Force***: Sebuah **tinjauan komprehensif** 📋 dari seluruh 25 permutasi dekripsi potensial, memfasilitasi deteksi visual *plaintext* yang valid.
-2.  **Insight Kriptanalitik Berbasis Frekuensi**: Ini menyediakan **wawasan heuristik yang cerdas** 💡 dan rekomendasi kunci yang terinformasi secara statistik.
-    * Instrumentasi ini secara otomatis menyoroti karakter dengan frekuensi tertinggi dalam *ciphertext* yang diberikan. 🎯
-    * Selanjutnya, ia menyajikan beberapa **kandidat dekripsi paling probabel** berdasarkan korelasi statistik dengan distribusi frekuensi karakter Bahasa Indonesia. 📊
-    * Fitur ini secara substansial **mereduksi ruang pencarian** untuk kunci yang valid, mengubah proses dari *random guessing* menjadi **investigasi yang terarah dan berbasis ilmiah**. 🔭
+2.  **Wawasan Kriptanalitik Berbasis Frekuensi**: Ini menyediakan **wawasan heuristik yang cerdas** 💡 dan rekomendasi kunci yang terinformasi secara statistik.
+      * Alat ini secara otomatis menyoroti karakter dengan frekuensi tertinggi dalam *ciphertext* yang diberikan. 🎯
+      * Selanjutnya, alat ini menyajikan beberapa **kandidat dekripsi paling mungkin** berdasarkan korelasi statistik dengan distribusi frekuensi karakter Bahasa Indonesia. 📊
+      * Fitur ini secara substansial **mengurangi ruang pencarian** untuk kunci yang valid, mengubah proses dari *random guessing* menjadi **investigasi yang terarah dan berbasis ilmiah**. 🔭
 
-Dengan peningkatan ini, "Caesar Cipher Analyzer" Anda tidak hanya berfungsi sebagai alat edukasi tetapi juga menjadi **instrumentasi kriptanalitik praktis** yang mengajarkan prinsip-prinsip fundamental dešifrasi dengan cara yang **efisien dan menarik secara intelektual**. 🎉🔬
